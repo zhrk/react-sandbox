@@ -9,15 +9,10 @@ import svgrPlugin from 'vite-plugin-svgr';
 export default defineConfig({
   build: { outDir: 'build' },
   server: { open: true, port: 3000, host: true },
+  css: { devSourcemap: true, postcss: { plugins: [autoprefixer()] } },
   plugins: [
     react(),
     checker({ typescript: true, overlay: { panelStyle: 'max-height: none; height: 100%;' } }),
     svgrPlugin({ svgrOptions: { ref: true } }),
   ],
-  css: {
-    devSourcemap: true,
-    postcss: {
-      plugins: [autoprefixer()],
-    },
-  },
 });
