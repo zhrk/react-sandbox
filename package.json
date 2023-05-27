@@ -2,29 +2,49 @@
   "name": "sandbox",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "tsc"
+    "start": "webpack serve --mode development",
+    "build": "webpack --mode production",
+    "test": "vitest",
+    "upgrade": "npx npm-check -u",
+    "tsc": "tsc",
+    "eslint": "eslint --ext ts,tsx src",
+    "stylelint": "stylelint **/*.scss --custom-syntax postcss-scss",
+    "lint": "npm run stylelint && npm run tsc && npm run eslint"
   },
   "dependencies": {
+    "@nanostores/react": "^0.6.0",
+    "@nanostores/router": "^0.9.1",
+    "nanostores": "^0.8.1",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "@types/react": "18.0.27",
-    "@types/react-dom": "18.0.10",
-    "@vitejs/plugin-react": "3.1.0",
-    "autoprefixer": "10.4.13",
-    "eslint": "8.25.0",
+    "@svgr/webpack": "8.0.1",
+    "@types/react": "18.2.6",
+    "@types/react-dom": "18.2.4",
+    "autoprefixer": "10.4.14",
+    "css-loader": "6.7.4",
+    "eslint": "8.41.0",
     "eslint-config-airbnb-typescript-prettier": "5.0.0",
-    "prettier": "2.7.1",
-    "sass": "1.58.0",
-    "vite": "4.1.1",
-    "vite-plugin-checker": "0.5.5",
-    "vite-plugin-svgr": "2.4.0",
-    "vitest": "0.28.4"
+    "eslint-webpack-plugin": "4.0.1",
+    "fork-ts-checker-webpack-plugin": "8.0.0",
+    "html-webpack-plugin": "5.5.1",
+    "postcss-loader": "7.3.0",
+    "postcss-scss": "4.0.6",
+    "prettier": "2.8.8",
+    "sass": "1.62.1",
+    "sass-loader": "13.2.2",
+    "style-loader": "3.3.3",
+    "stylelint": "15.6.2",
+    "stylelint-order": "6.0.3",
+    "stylelint-webpack-plugin": "4.1.1",
+    "ts-loader": "9.4.2",
+    "typescript": "5.0.4",
+    "vitest": "0.31.1",
+    "webpack": "5.83.1",
+    "webpack-cli": "5.1.1",
+    "webpack-dev-server": "4.15.0"
   },
   "prettier": {
     "printWidth": 100,
@@ -36,6 +56,10 @@
       "prettier/prettier": "error",
       "camelcase": "off",
       "no-param-reassign": "off",
+      "curly": [
+        "error",
+        "multi-line"
+      ],
       "import/extensions": "off",
       "react/prop-types": "off",
       "react/require-default-props": "off",
@@ -87,6 +111,160 @@
             "order": "asc",
             "caseInsensitive": true
           }
+        }
+      ]
+    }
+  },
+  "stylelint": {
+    "customSyntax": "postcss-scss",
+    "plugins": [
+      "stylelint-order"
+    ],
+    "rules": {
+      "order/properties-order": [
+        {
+          "groupName": "block-position",
+          "properties": [
+            "content",
+            "z-index",
+            "position",
+            "inset",
+            "top",
+            "right",
+            "bottom",
+            "left",
+            "transform",
+            "order"
+          ]
+        },
+        {
+          "groupName": "block-margin",
+          "properties": [
+            "margin",
+            "margin-top",
+            "margin-right",
+            "margin-bottom",
+            "margin-left"
+          ]
+        },
+        {
+          "groupName": "block-padding",
+          "properties": [
+            "padding",
+            "padding-top",
+            "padding-right",
+            "padding-bottom",
+            "padding-left"
+          ]
+        },
+        {
+          "groupName": "block-size",
+          "properties": [
+            "max-width",
+            "min-width",
+            "width",
+            "max-height",
+            "min-height",
+            "height"
+          ]
+        },
+        {
+          "groupName": "block-display",
+          "properties": [
+            "display",
+            "align-self",
+            "flex-direction",
+            "justify-content",
+            "align-items",
+            "flex-grow",
+            "flex-shrink",
+            "flex-wrap",
+            "grid-auto-flow",
+            "grid-auto-rows",
+            "grid-auto-columns",
+            "grid-template-rows",
+            "grid-template-columns",
+            "gap",
+            "row-gap",
+            "column-gap"
+          ]
+        },
+        {
+          "groupName": "block-appearance",
+          "properties": [
+            "box-shadow",
+            "outline",
+            "border",
+            "border-width",
+            "border-style",
+            "border-color",
+            "border-top",
+            "border-right",
+            "border-bottom",
+            "border-left",
+            "border-top-color",
+            "border-right-color",
+            "border-bottom-color",
+            "border-left-color",
+            "box-sizing",
+            "border-radius",
+            "border-top-left-radius",
+            "border-top-right-radius",
+            "border-bottom-right-radius",
+            "border-bottom-left-radius",
+            "background",
+            "background-image",
+            "background-size",
+            "background-repeat",
+            "background-color"
+          ]
+        },
+        {
+          "groupName": "block-text",
+          "properties": [
+            "color",
+            "font-family",
+            "font-size",
+            "font-weight",
+            "line-height",
+            "text-decoration",
+            "text-transform",
+            "text-overflow",
+            "text-align",
+            "white-space",
+            "word-break"
+          ]
+        },
+        {
+          "groupName": "block-meta-appearance",
+          "properties": [
+            "visibility",
+            "opacity",
+            "filter",
+            "object-fit"
+          ]
+        },
+        {
+          "groupName": "block-animation",
+          "properties": [
+            "animation",
+            "transition"
+          ]
+        },
+        {
+          "groupName": "block-outside",
+          "properties": [
+            "overflow"
+          ]
+        },
+        {
+          "groupName": "block-interaction",
+          "properties": [
+            "pointer-events",
+            "user-select",
+            "cursor",
+            "resize"
+          ]
         }
       ]
     }
