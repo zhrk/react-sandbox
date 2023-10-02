@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path');
+const CopyPlugin = require('copy-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -10,7 +11,18 @@ const extensions = ['.js', '.ts', '.tsx'];
 module.exports = (_, argv) => {
   const isDev = argv.mode !== 'production';
 
-  let plugins = [new HtmlWebpackPlugin({ template: path.join(__dirname, 'public', 'index.html') })];
+  let plugins = [
+    new HtmlWebpackPlugin({ template: path.join(__dirname, 'public', 'index.html') }),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: 'public',
+          to: '',
+          globOptions: { ignore: ['**/index.html'] },
+        },
+      ],
+    }),
+  ];
 
   if (isDev) {
     plugins = [
