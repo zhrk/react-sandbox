@@ -1,6 +1,29 @@
 .container {
   min-height: 100vh;
   display: flex;
+}
+
+.nav {
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 4px;
+
+  & > button {
+    border: 1px solid var(--text);
+    border-radius: 4px;
+    background: var(--black);
+    color: var(--text);
+  }
+
+  & > button.active {
+    color: var(--white);
+  }
+}
+
+.wrapper {
+  display: flex;
   justify-content: center;
   align-items: center;
+  flex-grow: 1;
 }
