@@ -1,3 +1,3 @@
-const Test: React.FC = () => <div>Test</div>;
+const Test = () => <div>Test</div>;
 
 export default Test;

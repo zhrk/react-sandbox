@@ -1,7 +1,7 @@
 import { StrictMode } from 'react';
 import App from '../App';
 
-const Root: React.FC = () => (
+const Root = () => (
   <StrictMode>
     <App />
   </StrictMode>

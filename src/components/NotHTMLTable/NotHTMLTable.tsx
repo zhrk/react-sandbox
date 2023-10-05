@@ -10,7 +10,7 @@ const columns = [
   },
 ];
 
-const NotHTMLTable: React.FC = () => (
+const NotHTMLTable = () => (
   <div className={styles.container}>
     <div className={styles.table}>
       <div className={styles.tableRow}>

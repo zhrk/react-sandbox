@@ -37,6 +37,10 @@ const Select = <Value extends Option | Options | null, Multi extends boolean = f
     }
   }, [value, onChange]);
 
+  /* основая проблема:
+    как типизириовать и внутри и снаружи onChange в зависимости от пропса multi без использования as?
+  */
+
   return <div>Select</div>;
 };
 
