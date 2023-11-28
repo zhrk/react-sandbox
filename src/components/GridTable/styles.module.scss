@@ -1,0 +1,19 @@
+.container {
+  max-width: 1200px;
+  width: 100%;
+}
+
+.table {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.tableRow {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  column-gap: 16px;
+  background-color: #111;
+  overflow: hidden;
+}
