@@ -72,3 +72,10 @@ input {
     border-color: var(--white);
   }
 }
+
+button {
+  border: 1px solid var(--text);
+  border-radius: 4px;
+  background-color: var(--black);
+  color: var(--white);
+}
