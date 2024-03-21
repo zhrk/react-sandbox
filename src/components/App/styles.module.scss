@@ -25,6 +25,13 @@
 }
 
 .wrapper {
+  padding: 16px;
+  display: flex;
+  flex-grow: 1;
+  box-sizing: border-box;
+}
+
+.centered {
   display: flex;
   justify-content: center;
   align-items: center;

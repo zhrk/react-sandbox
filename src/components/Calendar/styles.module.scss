@@ -1,0 +1,55 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  row-gap: 16px;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  column-gap: 16px;
+}
+
+.topControls {
+  display: flex;
+  column-gap: 8px;
+}
+
+.days {
+  display: grid;
+  flex-grow: 1;
+  grid-template-rows: repeat(6, calc(100% / 6));
+  grid-template-columns: repeat(7, calc(100% / 7));
+  border-right: 1px solid var(--grey);
+  border-bottom: 1px solid var(--grey);
+}
+
+.day {
+  padding: 8px;
+  display: grid;
+  grid-template-rows: min-content 1px;
+  row-gap: 4px;
+  border-top: 1px solid var(--grey);
+  border-left: 1px solid var(--grey);
+  overflow: hidden;
+  user-select: none;
+}
+
+.day.notAvailable {
+  & > span {
+    color: var(--grey-2);
+  }
+}
+
+.dayEvents {
+  display: flex;
+  flex-direction: column;
+  row-gap: 4px;
+}
+
+.dayEvent {
+  padding: 2px 4px;
+  border-radius: 4px;
+  background-color: var(--blue);
+}

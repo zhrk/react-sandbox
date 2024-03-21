@@ -1,4 +1,5 @@
 import { createBrowserRouter, NavLink, Outlet, RouterProvider, Navigate } from 'react-router-dom';
+import Calendar from '../Calendar';
 import Filter from '../Filter';
 import Select from '../Select';
 import Template from '../Template';
@@ -7,7 +8,11 @@ import styles from './styles.module.scss';
 const routes = [
   {
     path: '/',
-    element: <span className={styles.hello}>Hello</span>,
+    element: (
+      <div className={styles.centered}>
+        <span className={styles.hello}>Hello</span>
+      </div>
+    ),
   },
   {
     path: '/template',
@@ -16,15 +21,23 @@ const routes = [
   {
     path: '/select',
     element: (
-      <>
+      <div className={styles.centered}>
         <Select onChange={(value) => console.log(value)} />
         <Select multi onChange={(value) => console.log(value)} />
-      </>
+      </div>
     ),
   },
   {
     path: '/filter',
-    element: <Filter />,
+    element: (
+      <div className={styles.centered}>
+        <Filter />
+      </div>
+    ),
+  },
+  {
+    path: '/calendar',
+    element: <Calendar />,
   },
   {
     path: '*',
