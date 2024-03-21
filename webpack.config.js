@@ -4,9 +4,10 @@ const CopyPlugin = require('copy-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const StylelintPlugin = require('stylelint-webpack-plugin');
 
-const extensions = ['.js', '.ts', '.tsx'];
+const extensions = ['.tsx', '.ts', '.js'];
 
 module.exports = (_, argv) => {
   const isDev = argv.mode !== 'production';
@@ -22,6 +23,10 @@ module.exports = (_, argv) => {
         },
       ],
     }),
+    new MiniCssExtractPlugin({
+      filename: 'css/[name].[contenthash].css',
+      chunkFilename: 'css/[name].[contenthash].css',
+    }),
   ];
 
   if (isDev) {
@@ -29,7 +34,7 @@ module.exports = (_, argv) => {
       ...plugins,
       new ESLintPlugin({ extensions, emitWarning: false }),
       new StylelintPlugin(),
-      new ForkTsCheckerWebpackPlugin(),
+      new ForkTsCheckerWebpackPlugin({ typescript: { memoryLimit: 8192 } }),
     ];
   }
 
@@ -70,7 +75,7 @@ module.exports = (_, argv) => {
         {
           test: /\.scss$/,
           use: [
-            { loader: 'style-loader' },
+            isDev ? 'style-loader' : { loader: MiniCssExtractPlugin.loader },
             {
               loader: 'css-loader',
               options: { modules: { auto: true, localIdentName: '[local]_[hash:5]' } },
@@ -85,7 +90,7 @@ module.exports = (_, argv) => {
         {
           test: /\.svg$/,
           issuer: /\.tsx$/,
-          use: [{ loader: '@svgr/webpack', options: { ref: true } }],
+          use: [{ loader: '@svgr/webpack', options: { ref: true, icon: true } }],
         },
       ],
     },

@@ -3,13 +3,14 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "start": "webpack serve --mode development",
+    "start": "cross-env NODE_OPTIONS=--max-old-space-size=8192 webpack serve --mode development",
     "build": "webpack --mode production",
     "test": "vitest",
-    "upgrade": "npx npm-check -u",
+    "upgrade": "npx npm-check --update --save-exact",
     "tsc": "tsc",
     "eslint": "eslint --ext ts,tsx src",
-    "stylelint": "stylelint **/*.scss --custom-syntax postcss-scss",
+    "eslint:timing": "cross-env TIMING=1 eslint --ext ts,tsx src",
+    "stylelint": "stylelint **/*.scss",
     "lint": "npm run stylelint && npm run tsc && npm run eslint"
   },
   "dependencies": {
@@ -21,254 +22,35 @@
     "react-router-dom": "6.20.0"
   },
   "devDependencies": {
-    "@svgr/webpack": "8.0.1",
-    "@types/react": "18.2.6",
-    "@types/react-dom": "18.2.4",
-    "autoprefixer": "10.4.14",
-    "copy-webpack-plugin": "11.0.0",
-    "css-loader": "6.7.4",
-    "eslint": "8.41.0",
-    "eslint-config-airbnb-typescript-prettier": "5.0.0",
-    "eslint-webpack-plugin": "4.0.1",
-    "fork-ts-checker-webpack-plugin": "8.0.0",
-    "html-webpack-plugin": "5.5.1",
-    "postcss-loader": "7.3.0",
-    "postcss-scss": "4.0.6",
-    "prettier": "2.8.8",
-    "sass": "1.62.1",
-    "sass-loader": "13.2.2",
-    "style-loader": "3.3.3",
-    "stylelint": "15.6.2",
-    "stylelint-order": "6.0.3",
-    "stylelint-webpack-plugin": "4.1.1",
-    "ts-loader": "9.4.2",
-    "typescript": "5.0.4",
-    "vitest": "0.31.1",
-    "webpack": "5.83.1",
-    "webpack-cli": "5.1.1",
-    "webpack-dev-server": "4.15.0"
+    "@svgr/webpack": "8.1.0",
+    "@types/react": "18.2.67",
+    "@types/react-dom": "18.2.22",
+    "@zhrk/pack": "1.0.5",
+    "autoprefixer": "10.4.19",
+    "copy-webpack-plugin": "12.0.2",
+    "cross-env": "7.0.3",
+    "css-loader": "6.10.0",
+    "eslint-webpack-plugin": "4.1.0",
+    "fork-ts-checker-webpack-plugin": "9.0.2",
+    "html-webpack-plugin": "5.6.0",
+    "mini-css-extract-plugin": "2.8.1",
+    "postcss-loader": "8.1.1",
+    "sass": "1.72.0",
+    "sass-loader": "14.1.1",
+    "style-loader": "3.3.4",
+    "stylelint-webpack-plugin": "5.0.0",
+    "ts-loader": "9.5.1",
+    "typescript": "5.4.3",
+    "vitest": "1.4.0",
+    "webpack": "5.91.0",
+    "webpack-cli": "5.1.4",
+    "webpack-dev-server": "5.0.4"
   },
-  "prettier": {
-    "printWidth": 100,
-    "singleQuote": true
+  "prettier": "@zhrk/pack/prettier-config",
+  "stylelint": {
+    "extends": "@zhrk/pack/stylelint-config"
   },
   "eslintConfig": {
-    "extends": "airbnb-typescript-prettier",
-    "rules": {
-      "prettier/prettier": "error",
-      "camelcase": "off",
-      "no-param-reassign": "off",
-      "curly": [
-        "error",
-        "multi-line"
-      ],
-      "import/extensions": "off",
-      "react/prop-types": "off",
-      "react/require-default-props": "off",
-      "react/no-unused-prop-types": "off",
-      "react/jsx-filename-extension": "off",
-      "react/jsx-props-no-spreading": "off",
-      "react/react-in-jsx-scope": "off",
-      "react/no-array-index-key": "off",
-      "react/function-component-definition": "off",
-      "react/jsx-no-useless-fragment": [
-        2,
-        {
-          "allowExpressions": true
-        }
-      ],
-      "react/no-unstable-nested-components": [
-        "error",
-        {
-          "allowAsProps": true
-        }
-      ],
-      "import/prefer-default-export": "off",
-      "no-restricted-exports": "off",
-      "jsx-a11y/label-has-associated-control": "off",
-      "@typescript-eslint/explicit-module-boundary-types": "off",
-      "@typescript-eslint/ban-ts-comment": "off",
-      "@typescript-eslint/no-unused-vars": [
-        "warn"
-      ],
-      "arrow-body-style": [
-        "error",
-        "as-needed",
-        {
-          "requireReturnForObjectLiteral": false
-        }
-      ],
-      "import/order": [
-        "error",
-        {
-          "groups": [
-            "builtin",
-            "external",
-            "internal",
-            "parent",
-            "sibling",
-            "index"
-          ],
-          "alphabetize": {
-            "order": "asc",
-            "caseInsensitive": true
-          }
-        }
-      ]
-    }
-  },
-  "stylelint": {
-    "customSyntax": "postcss-scss",
-    "plugins": [
-      "stylelint-order"
-    ],
-    "rules": {
-      "order/properties-order": [
-        {
-          "groupName": "block-position",
-          "properties": [
-            "content",
-            "z-index",
-            "position",
-            "inset",
-            "top",
-            "right",
-            "bottom",
-            "left",
-            "transform",
-            "order"
-          ]
-        },
-        {
-          "groupName": "block-margin",
-          "properties": [
-            "margin",
-            "margin-top",
-            "margin-right",
-            "margin-bottom",
-            "margin-left"
-          ]
-        },
-        {
-          "groupName": "block-padding",
-          "properties": [
-            "padding",
-            "padding-top",
-            "padding-right",
-            "padding-bottom",
-            "padding-left"
-          ]
-        },
-        {
-          "groupName": "block-size",
-          "properties": [
-            "max-width",
-            "min-width",
-            "width",
-            "max-height",
-            "min-height",
-            "height"
-          ]
-        },
-        {
-          "groupName": "block-display",
-          "properties": [
-            "display",
-            "align-self",
-            "flex-direction",
-            "justify-content",
-            "align-items",
-            "flex-grow",
-            "flex-shrink",
-            "flex-wrap",
-            "grid-auto-flow",
-            "grid-auto-rows",
-            "grid-auto-columns",
-            "grid-template-rows",
-            "grid-template-columns",
-            "gap",
-            "row-gap",
-            "column-gap"
-          ]
-        },
-        {
-          "groupName": "block-appearance",
-          "properties": [
-            "box-shadow",
-            "outline",
-            "border",
-            "border-width",
-            "border-style",
-            "border-color",
-            "border-top",
-            "border-right",
-            "border-bottom",
-            "border-left",
-            "border-top-color",
-            "border-right-color",
-            "border-bottom-color",
-            "border-left-color",
-            "box-sizing",
-            "border-radius",
-            "border-top-left-radius",
-            "border-top-right-radius",
-            "border-bottom-right-radius",
-            "border-bottom-left-radius",
-            "background",
-            "background-image",
-            "background-size",
-            "background-repeat",
-            "background-color"
-          ]
-        },
-        {
-          "groupName": "block-text",
-          "properties": [
-            "color",
-            "font-family",
-            "font-size",
-            "font-weight",
-            "line-height",
-            "text-decoration",
-            "text-transform",
-            "text-overflow",
-            "text-align",
-            "white-space",
-            "word-break"
-          ]
-        },
-        {
-          "groupName": "block-meta-appearance",
-          "properties": [
-            "visibility",
-            "opacity",
-            "filter",
-            "object-fit"
-          ]
-        },
-        {
-          "groupName": "block-animation",
-          "properties": [
-            "animation",
-            "transition"
-          ]
-        },
-        {
-          "groupName": "block-outside",
-          "properties": [
-            "overflow"
-          ]
-        },
-        {
-          "groupName": "block-interaction",
-          "properties": [
-            "pointer-events",
-            "user-select",
-            "cursor",
-            "resize"
-          ]
-        }
-      ]
-    }
+    "extends": "./node_modules/@zhrk/pack/eslint-config"
   }
 }
