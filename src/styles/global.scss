@@ -1,15 +1,21 @@
 :root {
   --white: #fff;
   --black: #000;
+
   --bg: #0d1117;
-  --text: #8b949e;
+
+  --grey: #8b949e;
   --blue: #58a6ff;
+}
+
+html {
+  color-scheme: dark;
 }
 
 body {
   margin: 0;
   background-color: var(--bg);
-  color: var(--text);
+  color: var(--white);
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
   line-height: 1.5;
@@ -64,7 +70,7 @@ table {
 
 input {
   outline: none;
-  border: 1px solid var(--text);
+  border: 1px solid var(--grey);
   border-radius: 4px;
   background-color: var(--black);
 
@@ -74,7 +80,7 @@ input {
 }
 
 button {
-  border: 1px solid var(--text);
+  border: 1px solid var(--grey);
   border-radius: 4px;
   background-color: var(--black);
   color: var(--white);

@@ -10,7 +10,8 @@
   row-gap: 4px;
 
   & > a {
-    border: 1px solid var(--text);
+    padding: 0 8px;
+    border: 1px solid var(--grey);
     border-radius: 4px;
     background-color: var(--black);
     color: var(--text);
@@ -28,4 +29,9 @@
   justify-content: center;
   align-items: center;
   flex-grow: 1;
+}
+
+.hello {
+  color: var(--white);
+  font-size: 40px;
 }
