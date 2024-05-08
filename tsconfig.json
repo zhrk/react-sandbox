@@ -1,23 +1,4 @@
 {
-  "compilerOptions": {
-    "target": "ESNext",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": false,
-    "esModuleInterop": false,
-    "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
-    "module": "ESNext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx",
-
-    // approved
-    "skipLibCheck": true,
-    "strict": true,
-    "sourceMap": true,
-  },
-  "include": ["src"],
+  "extends": "@zhrk/pack/tsconfig.json",
+  "include": ["src"]
 }

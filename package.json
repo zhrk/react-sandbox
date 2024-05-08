@@ -3,11 +3,14 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "start": "cross-env NODE_OPTIONS=--max-old-space-size=8192 webpack serve --mode development",
-    "build": "webpack --mode production",
-    "test": "vitest",
+    "start": "zhrk-scripts start",
+    "build": "zhrk-scripts build",
+    "start:rsbuild": "zhrk-scripts start:rsbuild",
+    "build:rsbuild": "zhrk-scripts build:rsbuild",
+    "test": "zhrk-scripts test",
     "upgrade": "npx npm-check --update --save-exact",
     "tsc": "tsc",
+    "tsc:timing": "tsc --extendedDiagnostics",
     "eslint": "eslint --ext ts,tsx src",
     "eslint:timing": "cross-env TIMING=1 eslint --ext ts,tsx src",
     "stylelint": "stylelint **/*.scss",
@@ -25,35 +28,15 @@
     "react-router-dom": "6.20.0"
   },
   "devDependencies": {
-    "@svgr/webpack": "8.1.0",
     "@types/react": "18.2.67",
     "@types/react-dom": "18.2.22",
-    "@zhrk/pack": "1.0.5",
-    "autoprefixer": "10.4.19",
-    "copy-webpack-plugin": "12.0.2",
-    "cross-env": "7.0.3",
-    "css-loader": "6.10.0",
-    "eslint-webpack-plugin": "4.1.0",
-    "fork-ts-checker-webpack-plugin": "9.0.2",
-    "html-webpack-plugin": "5.6.0",
-    "mini-css-extract-plugin": "2.8.1",
-    "postcss-loader": "8.1.1",
-    "sass": "1.72.0",
-    "sass-loader": "14.1.1",
-    "style-loader": "3.3.4",
-    "stylelint-webpack-plugin": "5.0.0",
-    "ts-loader": "9.5.1",
-    "typescript": "5.4.3",
-    "vitest": "1.4.0",
-    "webpack": "5.91.0",
-    "webpack-cli": "5.1.4",
-    "webpack-dev-server": "5.0.4"
+    "@zhrk/pack": "1.0.24"
   },
-  "prettier": "@zhrk/pack/prettier-config",
+  "prettier": "@zhrk/pack/.prettierrc.js",
   "stylelint": {
-    "extends": "@zhrk/pack/stylelint-config"
+    "extends": "@zhrk/pack/stylelint.config.js"
   },
   "eslintConfig": {
-    "extends": "./node_modules/@zhrk/pack/eslint-config"
+    "extends": "./node_modules/@zhrk/pack/.eslintrc.js"
   }
 }
