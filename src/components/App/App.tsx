@@ -2,6 +2,7 @@ import { createBrowserRouter, NavLink, Outlet, RouterProvider, Navigate } from '
 import Calendar from '../Calendar';
 import Filter from '../Filter';
 import Select from '../Select';
+import SubGridTable from '../SubGridTable';
 import Template from '../Template';
 import styles from './styles.module.scss';
 
@@ -38,6 +39,10 @@ const routes = [
   {
     path: '/calendar',
     element: <Calendar />,
+  },
+  {
+    path: '/sub-grid-table',
+    element: <SubGridTable />,
   },
   {
     path: '*',
