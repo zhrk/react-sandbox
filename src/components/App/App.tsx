@@ -4,6 +4,7 @@ import Filter from '../Filter';
 import Select from '../Select';
 import SubGridTable from '../SubGridTable';
 import Template from '../Template';
+import YaMusic from '../YaMusic';
 import styles from './styles.module.scss';
 
 const routes = [
@@ -43,6 +44,10 @@ const routes = [
   {
     path: '/sub-grid-table',
     element: <SubGridTable />,
+  },
+  {
+    path: '/ya-music',
+    element: <YaMusic />,
   },
   {
     path: '*',

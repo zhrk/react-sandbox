@@ -1,0 +1,19 @@
+.container {
+  flex-grow: 1;
+
+  & > table {
+    width: 100%;
+
+    & tr:hover {
+      outline: 1px solid var(--grey);
+    }
+
+    & a {
+      color: var(--white);
+
+      &:visited {
+        color: var(--grey);
+      }
+    }
+  }
+}
