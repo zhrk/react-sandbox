@@ -1,18 +1,26 @@
 /* eslint-disable react/destructuring-assignment */
 
-import { ColumnDef, flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table';
+import { randFirstName, randLastName, randNumber, randUuid } from '@ngneat/falso';
+import {
+  ColumnDef,
+  createColumnHelper,
+  flexRender,
+  getCoreRowModel,
+  useReactTable,
+} from '@tanstack/react-table';
 import { useState } from 'react';
 import styles from './styles.module.scss';
 
 // https://github.com/TanStack/table/issues/4382
-// ^ ColumnDef<T, string или any>, мб пофиксисят и можно просто ColumnDef<T>
+// ^ ColumnDef<T, any>, мб пофиксисят и можно просто ColumnDef<T>
 
 type Props<T> = {
   data: T[];
-  columns: ColumnDef<T, string>[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  columns: ColumnDef<T, any>[];
 };
 
-const TanStackTable = <T,>(props: Props<T>) => {
+export const Table = <T,>(props: Props<T>) => {
   const { columns } = props;
 
   const [data] = useState(() => [...props.data]);
@@ -61,5 +69,28 @@ const TanStackTable = <T,>(props: Props<T>) => {
     </div>
   );
 };
+
+const fakeData = Array.from({ length: 25 }).map(() => ({
+  id: randUuid(),
+  firstName: randFirstName(),
+  lastName: randLastName(),
+  age: randNumber({ min: 1, max: 99 }),
+}));
+
+const columnHelper = createColumnHelper<(typeof fakeData)[number]>();
+
+const columns = [
+  columnHelper.accessor((data) => data.firstName, {
+    header: 'firstName',
+  }),
+  columnHelper.accessor((data) => data.lastName, {
+    header: 'lastName',
+  }),
+  columnHelper.accessor((data) => data.age, {
+    header: 'age',
+  }),
+];
+
+const TanStackTable = () => <Table data={fakeData} columns={columns} />;
 
 export default TanStackTable;

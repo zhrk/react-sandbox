@@ -1,5 +1,5 @@
 import { createColumnHelper } from '@tanstack/react-table';
-import TanStackTable from '../TanStackTable';
+import { Table } from '../TanStackTable';
 import { filteredLikes } from './ids';
 import likes from './music/likes.json';
 import YaMusicCopyButton from './YaMusicCopyButton';
@@ -51,6 +51,6 @@ const columns = [
   }),
 ];
 
-const YaMusic = () => <TanStackTable data={jsonData} columns={columns} />;
+const YaMusic = () => <Table data={jsonData} columns={columns} />;
 
 export default YaMusic;
