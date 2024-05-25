@@ -10,4 +10,8 @@
 .tabs {
   display: flex;
   column-gap: 4px;
+
+  & button:global(.active) {
+    border-color: var(--blue);
+  }
 }

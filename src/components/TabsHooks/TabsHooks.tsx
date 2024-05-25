@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import { useState } from 'react';
 import { keys } from 'remeda';
 import styles from './styles.module.scss';
@@ -15,15 +16,21 @@ const useTabs = <T extends string, K extends T>(config: Config<T>, defaultTab?: 
 };
 
 const TabsHooks = () => {
-  const { tab, tabs, setTab } = useTabs({ all: 'All', todo: 'Todo', complete: 'Complete' }, 'todo');
+  const config = { all: 'All', todo: 'Todo', complete: 'Complete' };
+
+  const { tab, tabs, setTab } = useTabs(config, 'todo');
 
   return (
     <div className={styles.container}>
-      {tab}
       <div className={styles.tabs}>
         {tabs.map((item) => (
-          <button key={item} type="button" onClick={() => setTab(item)}>
-            {item}
+          <button
+            key={item}
+            type="button"
+            onClick={() => setTab(item)}
+            className={clsx(item === tab && 'active')}
+          >
+            {config[item]}
           </button>
         ))}
       </div>
