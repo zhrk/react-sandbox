@@ -3,6 +3,7 @@ import Calendar from '../Calendar';
 import Filter from '../Filter';
 import Select from '../Select';
 import SubGridTable from '../SubGridTable';
+import TabsHooks from '../TabsHooks';
 import Template from '../Template';
 import YaMusic from '../YaMusic';
 import styles from './styles.module.scss';
@@ -48,6 +49,10 @@ const routes = [
   {
     path: '/ya-music',
     element: <YaMusic />,
+  },
+  {
+    path: '/tabs-hook',
+    element: <TabsHooks />,
   },
   {
     path: '*',
