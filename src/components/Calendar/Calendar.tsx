@@ -22,6 +22,9 @@ const Calendar = () => {
   // onKeyDown обработать без undefined
   // иначе пофиксить баг когда много эвентов (grid-template-rows: min-content 1px;)
   // протестить с таймзонами
+  // значение свойства grid-template-rows можно сделать динамическим
+  // (https://frontendmasters.com/blog/css-fan-out-with-grid-and-property/)
+  // если использовать внутри кастомное свойство --int, объявленное через @property, и анимировать его
 
   return (
     <div className={styles.container}>
