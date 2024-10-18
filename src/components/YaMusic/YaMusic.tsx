@@ -23,9 +23,15 @@ let jsonData: (
     }
 )[] = likes;
 
+// const originalArray = jsonData;
+
 jsonData = jsonData
   .filter((item) => item.type !== 'album' && item.type !== 'artist')
   .filter((item) => !filteredLikes.includes(item.id));
+
+// const unliked = filteredLikes.filter((x) => !originalArray.map((item) => item.id).includes(x));
+
+// console.log(unliked);
 
 const columnHelper = createColumnHelper<(typeof jsonData)[number]>();
 
