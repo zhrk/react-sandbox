@@ -1,6 +1,7 @@
 import { createBrowserRouter, NavLink, Outlet, RouterProvider, Navigate } from 'react-router-dom';
 import Calendar from '../Calendar';
 import Filter from '../Filter';
+import Nuqs from '../Nuqs';
 import Select from '../Select';
 import SubGridTable from '../SubGridTable';
 import TabsHooks from '../TabsHooks';
@@ -58,6 +59,10 @@ const routes = [
   {
     path: '/tabs-hook',
     element: <TabsHooks />,
+  },
+  {
+    path: '/nuqs',
+    element: <Nuqs />,
   },
   {
     path: '*',
