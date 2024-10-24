@@ -1,7 +1,6 @@
 import { createColumnHelper } from '@tanstack/react-table';
 import { Table } from '../TanStackTable';
-import { filteredLikes } from './ids';
-import likes from './music/likes.json';
+import { filteredLikes, likes } from './sources';
 import YaMusicCopyButton from './YaMusicCopyButton';
 
 let jsonData: (

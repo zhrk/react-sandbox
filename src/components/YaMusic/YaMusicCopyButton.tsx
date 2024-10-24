@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { filteredLikes } from './ids';
+import { filteredLikes } from './sources';
 
 type Props = {
   children?: string;
