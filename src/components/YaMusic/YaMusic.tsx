@@ -1,7 +1,35 @@
 import { createColumnHelper } from '@tanstack/react-table';
+import copy from 'copy-to-clipboard';
+import { ReactNode, useState } from 'react';
 import { Table } from '../TanStackTable';
 import { filteredLikes, likes } from './sources';
 import YaMusicCopyButton from './YaMusicCopyButton';
+
+const CopyLink = (props: { children: ReactNode; onClick: () => void }) => {
+  const { children, onClick } = props;
+
+  const [copied, setCopied] = useState(false);
+
+  return (
+    <button
+      type="button"
+      disabled={copied}
+      onClick={() => {
+        setCopied(true);
+
+        onClick();
+
+        if (!copied) {
+          setTimeout(() => {
+            setCopied(false);
+          }, 3000);
+        }
+      }}
+    >
+      {copied ? 'Copied!' : children}
+    </button>
+  );
+};
 
 let jsonData: (
   | {
@@ -48,7 +76,17 @@ const columns = [
         {info.getValue()}
       </a>
     ),
-    footer: (props) => props.table.getRowCount(),
+    footer: (props) => (
+      <div>
+        <CopyLink
+          onClick={() =>
+            copy('yt-dlp --cookies-from-browser firefox --embed-thumbnail --embed-metadata ')
+          }
+        >
+          Download link ({props.table.getRowCount()})
+        </CopyLink>
+      </div>
+    ),
   }),
   columnHelper.accessor((data) => new Date(data.timestamp).toLocaleDateString(), {
     id: 'timestamp',
