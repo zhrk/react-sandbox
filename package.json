@@ -22,7 +22,6 @@
     "@ngneat/falso": "7.2.0",
     "@tanstack/react-table": "8.17.3",
     "clsx": "2.1.1",
-    "copy-to-clipboard": "3.3.3",
     "date-fns": "3.6.0",
     "nuqs": "2.0.4",
     "react": "18.3.1",

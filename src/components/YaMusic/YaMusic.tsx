@@ -1,35 +1,8 @@
 import { createColumnHelper } from '@tanstack/react-table';
-import copy from 'copy-to-clipboard';
-import { ReactNode, useState } from 'react';
 import { Table } from '../TanStackTable';
 import { filteredLikes, likes } from './sources';
 import YaMusicCopyButton from './YaMusicCopyButton';
-
-const CopyLink = (props: { children: ReactNode; onClick: () => void }) => {
-  const { children, onClick } = props;
-
-  const [copied, setCopied] = useState(false);
-
-  return (
-    <button
-      type="button"
-      disabled={copied}
-      onClick={() => {
-        setCopied(true);
-
-        onClick();
-
-        if (!copied) {
-          setTimeout(() => {
-            setCopied(false);
-          }, 3000);
-        }
-      }}
-    >
-      {copied ? 'Copied!' : children}
-    </button>
-  );
-};
+import YaMusicCopyLink from './YaMusicCopyLink';
 
 let jsonData: (
   | {
@@ -66,7 +39,12 @@ const columns = [
   columnHelper.accessor((data) => data.id, {
     id: 'action',
     header: '',
-    cell: (data) => <YaMusicCopyButton>{data.row.original.id}</YaMusicCopyButton>,
+    cell: (data) => (
+      <div>
+        <YaMusicCopyButton emoji="📑">{data.row.original.id}</YaMusicCopyButton>
+        <YaMusicCopyButton emoji="🔤">{data.row.original.name}</YaMusicCopyButton>
+      </div>
+    ),
   }),
   columnHelper.accessor((data) => data.title, {
     id: 'title',
@@ -76,17 +54,25 @@ const columns = [
         {info.getValue()}
       </a>
     ),
-    footer: (props) => (
-      <div>
-        <CopyLink
-          onClick={() =>
-            copy('yt-dlp --cookies-from-browser firefox --embed-thumbnail --embed-metadata ')
-          }
-        >
-          Download link ({props.table.getRowCount()})
-        </CopyLink>
-      </div>
-    ),
+    footer: (props) => {
+      const count = props.table.getRowCount();
+
+      if (!count) return null;
+
+      return (
+        <div>
+          <YaMusicCopyLink
+            onClick={() =>
+              navigator.clipboard.writeText(
+                'yt-dlp --cookies-from-browser firefox --embed-thumbnail --embed-metadata'
+              )
+            }
+          >
+            Download link ({props.table.getRowCount()})
+          </YaMusicCopyLink>
+        </div>
+      );
+    },
   }),
   columnHelper.accessor((data) => new Date(data.timestamp).toLocaleDateString(), {
     id: 'timestamp',

@@ -2,11 +2,12 @@ import { useState } from 'react';
 import { filteredLikes } from './sources';
 
 type Props = {
+  emoji: string;
   children?: string;
 };
 
 const YaMusicCopyButton = (props: Props) => {
-  const { children } = props;
+  const { emoji, children } = props;
 
   const [copied, setCopied] = useState(children ? filteredLikes.includes(children) : false);
 
@@ -21,7 +22,7 @@ const YaMusicCopyButton = (props: Props) => {
         }
       }}
     >
-      {copied ? <>✅</> : <>📑</>}
+      {copied ? <>✅</> : <>{emoji}</>}
     </button>
   );
 };
