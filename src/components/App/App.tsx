@@ -1,9 +1,9 @@
+/* eslint-disable no-console */
 import { createBrowserRouter, NavLink, Outlet, RouterProvider, Navigate } from 'react-router-dom';
 import Calendar from '../Calendar';
 import Filter from '../Filter';
 import Nuqs from '../Nuqs';
 import Select from '../Select';
-import Select2 from '../Select/Select2';
 import SubGridTable from '../SubGridTable';
 import TabsHooks from '../TabsHooks';
 import TanStackTable from '../TanStackTable';
@@ -30,8 +30,6 @@ const routes = [
       <div className={styles.centered}>
         <Select onChange={(value) => console.log(value)} />
         <Select multi onChange={(value) => console.log(value)} />
-        <Select2 type="single" onChange={(value) => console.log(value)} />
-        <Select2 type="multi" onChange={(value) => console.log(value)} />
       </div>
     ),
   },
