@@ -82,4 +82,45 @@ function Select(props: SelectProps): JSX.Element {
   return <div>Select</div>;
 } */
 
+//TS-PLAYGROUND
+
+// import React, { useEffect, useState } from 'react';
+
+// type Option = { value: string; label: string };
+// type Options = Option[];
+
+// type Value<Multi> = Multi extends true ? Options : Option | null;
+
+// type Props<Multi> = Multi extends true
+//   ? {
+//       multi: Multi;
+//       onChange?: (value: Value<Multi>) => void;
+//     }
+//   : {
+//       multi?: Multi;
+//       onChange?: (value: Value<Multi>) => void;
+//     };
+
+// const Select = <Multi extends boolean = false>(props: Props<Multi>) => {
+
+//     const { multi = false, onChange } = props;
+
+//   const [value, setValue] = useState(multi ? [] : null);
+
+//   useEffect(() => {
+//     if (onChange) {
+//       onChange(value);
+//     }
+//   }, [value, onChange]);
+
+//   return <div>Select</div>;
+// }
+
+// <>
+//     <Select onChange={(value) => console.log(value)} />
+//                     // ^?
+//     <Select multi onChange={(value) => console.log(value)} />
+//                             // ^?
+// </>
+
 export default Select;
