@@ -39,12 +39,7 @@ const columns = [
   columnHelper.accessor((data) => data.id, {
     id: 'action',
     header: '',
-    cell: (data) => (
-      <div>
-        <YaMusicCopyButton emoji="📑">{data.row.original.id}</YaMusicCopyButton>
-        <YaMusicCopyButton emoji="🔤">{data.row.original.name}</YaMusicCopyButton>
-      </div>
-    ),
+    cell: (data) => <YaMusicCopyButton emoji="📑">{data.row.original.id}</YaMusicCopyButton>,
   }),
   columnHelper.accessor((data) => data.title, {
     id: 'title',
