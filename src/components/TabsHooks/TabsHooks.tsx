@@ -8,7 +8,7 @@ import styles from './styles.module.scss';
 type Config<T extends string> = Record<T, string>;
 
 const useTabs = <T extends string, K extends T>(config: Config<T>, defaultTab?: K) => {
-  const tabs = keys.strict(config);
+  const tabs = keys(config);
 
   const [tab, setTab] = useState(defaultTab || tabs[0]);
 

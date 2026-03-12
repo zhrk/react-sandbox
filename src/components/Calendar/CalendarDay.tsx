@@ -1,6 +1,7 @@
+/* eslint-disable jsx-a11y/prefer-tag-over-role */
 import { randAnimal } from '@ngneat/falso';
 import clsx from 'clsx';
-import { format, isWithinInterval, isSameMonth } from 'date-fns';
+import { format, isSameMonth, isWithinInterval } from 'date-fns';
 import { nanoid } from 'nanoid';
 import { Dispatch, SetStateAction } from 'react';
 import styles from './styles.module.scss';

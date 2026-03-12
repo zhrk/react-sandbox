@@ -1,4 +1,4 @@
-import { addDays, endOfMonth, startOfWeek, startOfMonth, eachDayOfInterval } from 'date-fns';
+import { addDays, eachDayOfInterval, endOfMonth, startOfMonth, startOfWeek } from 'date-fns';
 
 const MONDAY = 1;
 

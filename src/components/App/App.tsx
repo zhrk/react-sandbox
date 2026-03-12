@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { createBrowserRouter, NavLink, Outlet, RouterProvider, Navigate } from 'react-router-dom';
+import { createBrowserRouter, Navigate, NavLink, Outlet, RouterProvider } from 'react-router-dom';
 import Calendar from '../Calendar';
 import Filter from '../Filter';
 import Nuqs from '../Nuqs';
