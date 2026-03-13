@@ -1,6 +1,7 @@
 import { clsx } from 'clsx';
 import { format, isSameMonth } from 'date-fns';
 import CalendarContext from './CalendarContext';
+import CalendarDayView from './CalendarDayView';
 import CalendarMonthView from './CalendarMonthView';
 import styles from './styles.module.scss';
 import useCalendar from './useCalendar';
@@ -48,7 +49,7 @@ const Calendar = () => {
             ))}
           </div>
         </div>
-        {view === 'day' && 'day view'}
+        {view === 'day' && <CalendarDayView />}
         {view === 'week' && 'week view'}
         {view === 'month' && <CalendarMonthView />}
         {view === 'schedule' && 'schedule'}

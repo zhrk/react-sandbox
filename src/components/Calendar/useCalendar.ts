@@ -2,7 +2,15 @@ import { addMonths, subMonths } from 'date-fns';
 import { useState } from 'react';
 import { getDays } from './helpers';
 import { mockedEvents } from './mocks';
-import { Events } from './types';
+
+interface Event {
+  id: string;
+  title: string;
+  from: Date;
+  to: Date;
+}
+
+type Events = Event[];
 
 const views = ['day', 'week', 'month', 'schedule'] as const;
 
