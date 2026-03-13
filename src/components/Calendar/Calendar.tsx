@@ -1,3 +1,4 @@
+import { clsx } from 'clsx';
 import { addMonths, format, isSameMonth, subMonths } from 'date-fns';
 import { useState } from 'react';
 import CalendarDay from './CalendarDay';
@@ -6,10 +7,13 @@ import { mockedEvents } from './mocks';
 import styles from './styles.module.scss';
 import { Events } from './types';
 
+const views = ['day', 'week', 'month', 'schedule'] as const;
+
 const Calendar = () => {
   const [date, setDate] = useState(new Date());
 
   const [events, setEvents] = useState<Events>(mockedEvents);
+  const [view, setView] = useState<(typeof views)[number]>('day');
 
   const goToNow = () => setDate(new Date());
   const goToPrev = () => setDate((prev) => subMonths(prev, 1));
@@ -39,8 +43,20 @@ const Calendar = () => {
           <button disabled={isSameMonth(new Date(), date)} type="button" onClick={goToNow}>
             now
           </button>
+          {format(date, 'dd.MM.yyyy')}
         </div>
-        {format(date, 'dd.MM.yyyy')}
+        <div className={styles.topControls}>
+          {views.map((item) => (
+            <button
+              key={item}
+              type="button"
+              onClick={() => setView(item)}
+              className={clsx(view === item && styles.active)}
+            >
+              {item}
+            </button>
+          ))}
+        </div>
       </div>
       <div className={styles.days}>
         {days.map((day) => (
