@@ -3,19 +3,17 @@ import { randAnimal } from '@ngneat/falso';
 import clsx from 'clsx';
 import { format, isSameMonth, isWithinInterval } from 'date-fns';
 import { nanoid } from 'nanoid';
-import { Dispatch, SetStateAction } from 'react';
+import { useCalendarContext } from './CalendarContext';
 import styles from './styles.module.scss';
-import { Events } from './types';
 
-type Props = {
+interface Props {
   day: Date;
-  date: Date;
-  events: Events;
-  setEvents: Dispatch<SetStateAction<Events>>;
-};
+}
 
 const CalendarDay = (props: Props) => {
-  const { day, date, events, setEvents } = props;
+  const { day } = props;
+
+  const { date, events, setEvents } = useCalendarContext();
 
   const currentEvents = events.filter((event) =>
     isWithinInterval(day, { start: event.from, end: event.to })

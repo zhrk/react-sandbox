@@ -1,25 +1,14 @@
 import { clsx } from 'clsx';
-import { addMonths, format, isSameMonth, subMonths } from 'date-fns';
-import { useState } from 'react';
-import CalendarDay from './CalendarDay';
-import { getDays } from './helpers';
-import { mockedEvents } from './mocks';
+import { format, isSameMonth } from 'date-fns';
+import CalendarContext from './CalendarContext';
+import CalendarMonthView from './CalendarMonthView';
 import styles from './styles.module.scss';
-import { Events } from './types';
-
-const views = ['day', 'week', 'month', 'schedule'] as const;
+import useCalendar from './useCalendar';
 
 const Calendar = () => {
-  const [date, setDate] = useState(new Date());
+  const calendar = useCalendar();
 
-  const [events, setEvents] = useState<Events>(mockedEvents);
-  const [view, setView] = useState<(typeof views)[number]>('day');
-
-  const goToNow = () => setDate(new Date());
-  const goToPrev = () => setDate((prev) => subMonths(prev, 1));
-  const goToNext = () => setDate((prev) => addMonths(prev, 1));
-
-  const days = getDays(date);
+  const { view, setView, goToPrev, goToNext, goToNow, date, views } = calendar;
 
   // getDays проревьювить
   // переключение месяцев колёсиком мыши
@@ -31,45 +20,40 @@ const Calendar = () => {
   // если использовать внутри кастомное свойство --int, объявленное через @property, и анимировать его
 
   return (
-    <div className={styles.container}>
-      <div className={styles.top}>
-        <div className={styles.topControls}>
-          <button type="button" onClick={goToPrev}>
-            prev
-          </button>
-          <button type="button" onClick={goToNext}>
-            next
-          </button>
-          <button disabled={isSameMonth(new Date(), date)} type="button" onClick={goToNow}>
-            now
-          </button>
-          {format(date, 'dd.MM.yyyy')}
-        </div>
-        <div className={styles.topControls}>
-          {views.map((item) => (
-            <button
-              key={item}
-              type="button"
-              onClick={() => setView(item)}
-              className={clsx(view === item && styles.active)}
-            >
-              {item}
+    <CalendarContext {...calendar}>
+      <div className={styles.container}>
+        <div className={styles.top}>
+          <div className={styles.topControls}>
+            <button type="button" onClick={goToPrev}>
+              prev
             </button>
-          ))}
+            <button type="button" onClick={goToNext}>
+              next
+            </button>
+            <button disabled={isSameMonth(new Date(), date)} type="button" onClick={goToNow}>
+              now
+            </button>
+            {format(date, 'dd.MM.yyyy')}
+          </div>
+          <div className={styles.topControls}>
+            {views.map((item) => (
+              <button
+                key={item}
+                type="button"
+                onClick={() => setView(item)}
+                className={clsx(view === item && styles.active)}
+              >
+                {item}
+              </button>
+            ))}
+          </div>
         </div>
+        {view === 'day' && 'day view'}
+        {view === 'week' && 'week view'}
+        {view === 'month' && <CalendarMonthView />}
+        {view === 'schedule' && 'schedule'}
       </div>
-      <div className={styles.days}>
-        {days.map((day) => (
-          <CalendarDay
-            key={day.toString()}
-            day={day}
-            date={date}
-            events={events}
-            setEvents={setEvents}
-          />
-        ))}
-      </div>
-    </div>
+    </CalendarContext>
   );
 };
 
