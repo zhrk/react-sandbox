@@ -31,10 +31,10 @@ const convert = (values: Record<string, unknown>) => {
   return Object.fromEntries(clearedParams);
 };
 
-type Option = {
+interface Option {
   value: string;
   label: string;
-};
+}
 
 const Filter = () => {
   const [, setSearchParmas] = useSearchParams();

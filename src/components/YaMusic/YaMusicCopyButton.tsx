@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { filteredLikes } from './sources';
 
-type Props = {
+interface Props {
   emoji: string;
   children?: string;
-};
+}
 
 const YaMusicCopyButton = (props: Props) => {
   const { emoji, children } = props;
