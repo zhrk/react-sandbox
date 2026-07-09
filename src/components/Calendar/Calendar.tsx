@@ -22,7 +22,7 @@ const Calendar = () => {
 
   return (
     <CalendarContext {...calendar}>
-      <div className={styles.container}>
+      <div className={styles.calendar}>
         <div className={styles.top}>
           <div className={styles.topControls}>
             <button type="button" onClick={goToPrev}>

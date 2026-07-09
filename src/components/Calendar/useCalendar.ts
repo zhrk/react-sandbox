@@ -3,21 +3,12 @@ import { useState } from 'react';
 import { getDays } from './helpers';
 import { mockedEvents } from './mocks';
 
-interface Event {
-  id: string;
-  title: string;
-  from: Date;
-  to: Date;
-}
-
-type Events = Event[];
-
 const views = ['day', 'week', 'month', 'schedule'] as const;
 
 const useCalendar = () => {
   const [date, setDate] = useState(new Date());
 
-  const [events, setEvents] = useState<Events>(mockedEvents);
+  const [events, setEvents] = useState(mockedEvents);
   const [view, setView] = useState<(typeof views)[number]>('day');
 
   const goToNow = () => setDate(new Date());
@@ -27,16 +18,16 @@ const useCalendar = () => {
   const days = getDays(date);
 
   return {
-    view,
-    setView,
-    goToPrev,
-    goToNext,
-    goToNow,
     date,
+    view,
+    days,
     views,
     events,
+    setView,
+    goToNow,
+    goToPrev,
+    goToNext,
     setEvents,
-    days,
   };
 };
 
