@@ -47,6 +47,10 @@
   }
 }
 
+.day.selected {
+  background-color: color-opacity(var(--blue), 0.2);
+}
+
 .dayEvents {
   display: flex;
   flex-direction: column;

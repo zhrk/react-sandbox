@@ -19,6 +19,10 @@ const Calendar = () => {
   // значение свойства grid-template-rows можно сделать динамическим
   // (https://frontendmasters.com/blog/css-fan-out-with-grid-and-property/)
   // если использовать внутри кастомное свойство --int, объявленное через @property, и анимировать его
+  // https://microsoftedge.github.io/Demos/css-gap-decorations/calendar-week.html
+  // https://developer.chrome.com/blog/gap-decorations-stable
+
+  // сделать onEvent и вынести рандом в пропсы календаря
 
   return (
     <CalendarContext {...calendar}>

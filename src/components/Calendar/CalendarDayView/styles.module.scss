@@ -5,6 +5,8 @@
   overflow: auto;
 
   & > button {
+    display: flex;
+    column-gap: 8px;
     border: none;
     border-radius: 0;
     background: none;
@@ -14,12 +16,25 @@
       border-bottom: 1px solid var(--grey);
     }
 
-    &:nth-child(even) > span {
+    &:nth-child(even) > .time {
       opacity: 0;
     }
 
     &:nth-child(odd) {
       border-color: var(--grey-2);
     }
+
+    &.selected {
+      background-color: color-opacity(var(--blue), 0.2);
+    }
   }
+}
+
+.event {
+  padding: 0 4px;
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  background-color: var(--blue);
+  font-size: 14px;
 }

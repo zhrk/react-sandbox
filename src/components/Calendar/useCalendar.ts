@@ -7,9 +7,8 @@ const views = ['day', 'week', 'month', 'schedule'] as const;
 
 const useCalendar = () => {
   const [date, setDate] = useState(new Date());
-
   const [events, setEvents] = useState(mockedEvents);
-  const [view, setView] = useState<(typeof views)[number]>('day');
+  const [view, setView] = useState<(typeof views)[number]>('month');
 
   const goToNow = () => setDate(new Date());
   const goToPrev = () => setDate((prev) => subMonths(prev, 1));
