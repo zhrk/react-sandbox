@@ -1,6 +1,5 @@
 /* eslint-disable no-console */
 import { createBrowserRouter, Navigate, NavLink, Outlet, RouterProvider } from 'react-router-dom';
-import Calendar from '../Calendar';
 import Filter from '../Filter';
 import Nuqs from '../Nuqs';
 import Select from '../Select';
@@ -9,6 +8,7 @@ import TabsHooks from '../TabsHooks';
 import TanStackTable from '../TanStackTable';
 import Template from '../Template';
 import YaMusic from '../YaMusic';
+import AppCalendar from './AppCalendar';
 import styles from './styles.module.scss';
 
 const routes = [
@@ -43,7 +43,7 @@ const routes = [
   },
   {
     path: '/calendar',
-    element: <Calendar />,
+    element: <AppCalendar />,
   },
   {
     path: '/sub-grid-table',

@@ -2,16 +2,13 @@
 import { clsx } from 'clsx';
 import { endOfDay, format, isSameMonth, isWithinInterval, startOfDay } from 'date-fns';
 import { useCalendarContext } from './CalendarContext';
-import { createRandomEvent } from './mocks';
 import styles from './styles.module.scss';
 import useCalendarSelectionRange from './useCalendarSelectionRange';
 
 const CalendarMonthView = () => {
-  const { date, events, days, setEvents } = useCalendarContext();
+  const { date, events, days, onSelect } = useCalendarContext();
 
-  const { inRange, handleMouseDown, handleMouseEnter } = useCalendarSelectionRange((from, to) =>
-    setEvents((prev) => [...prev, createRandomEvent(from, to)])
-  );
+  const { inRange, handleMouseDown, handleMouseEnter } = useCalendarSelectionRange(onSelect);
 
   return (
     <div className={styles.days}>
@@ -30,7 +27,7 @@ const CalendarMonthView = () => {
             role="button"
             onMouseDown={() => handleMouseDown(day)}
             onMouseEnter={() => handleMouseEnter(day)}
-            onClick={() => setEvents((prev) => [...prev, createRandomEvent(day, day)])}
+            onClick={() => onSelect(day, day)}
             className={clsx(
               styles.day,
               selected && styles.selected,

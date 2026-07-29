@@ -6,8 +6,10 @@ import CalendarMonthView from './CalendarMonthView';
 import styles from './styles.module.scss';
 import useCalendar from './useCalendar';
 
-const Calendar = () => {
-  const calendar = useCalendar();
+type Props = Pick<ReturnType<typeof useCalendar>, 'events' | 'onSelect'>;
+
+const Calendar = (props: Props) => {
+  const calendar = useCalendar(props);
 
   const { view, setView, goToPrev, goToNext, goToNow, date, views } = calendar;
 
@@ -21,8 +23,6 @@ const Calendar = () => {
   // если использовать внутри кастомное свойство --int, объявленное через @property, и анимировать его
   // https://microsoftedge.github.io/Demos/css-gap-decorations/calendar-week.html
   // https://developer.chrome.com/blog/gap-decorations-stable
-
-  // сделать onEvent и вынести рандом в пропсы календаря
 
   return (
     <CalendarContext {...calendar}>

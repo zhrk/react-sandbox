@@ -1,13 +1,12 @@
 import { addMonths, subMonths } from 'date-fns';
 import { useState } from 'react';
 import { getDays } from './helpers';
-import { mockedEvents } from './mocks';
+import { Props } from './types';
 
 const views = ['day', 'week', 'month', 'schedule'] as const;
 
-const useCalendar = () => {
+const useCalendar = (args: Props) => {
   const [date, setDate] = useState(new Date());
-  const [events, setEvents] = useState(mockedEvents);
   const [view, setView] = useState<(typeof views)[number]>('month');
 
   const goToNow = () => setDate(new Date());
@@ -21,12 +20,12 @@ const useCalendar = () => {
     view,
     days,
     views,
-    events,
     setView,
     goToNow,
     goToPrev,
     goToNext,
-    setEvents,
+
+    ...args,
   };
 };
 
