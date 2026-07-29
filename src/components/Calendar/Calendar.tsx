@@ -3,6 +3,7 @@ import { format, isSameMonth } from 'date-fns';
 import CalendarContext from './CalendarContext';
 import CalendarDayView from './CalendarDayView';
 import CalendarMonthView from './CalendarMonthView';
+import CalendarScheduleView from './CalendarScheduleView';
 import styles from './styles.module.scss';
 import useCalendar from './useCalendar';
 
@@ -56,7 +57,7 @@ const Calendar = (props: Props) => {
         {view === 'day' && <CalendarDayView />}
         {view === 'week' && 'week view'}
         {view === 'month' && <CalendarMonthView />}
-        {view === 'schedule' && 'schedule'}
+        {view === 'schedule' && <CalendarScheduleView />}
       </div>
     </CalendarContext>
   );
