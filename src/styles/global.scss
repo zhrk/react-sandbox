@@ -4,7 +4,7 @@
 
   --bg: #0d1117;
 
-  --grey: #8b949e;
+  --grey-1: #8b949e;
   --grey-2: #21262d;
 
   --blue: #1f5eff;
@@ -72,7 +72,7 @@ table {
 
 input {
   outline: none;
-  border: 1px solid var(--grey);
+  border: 1px solid var(--grey-1);
   border-radius: 4px;
   background-color: var(--black);
 
@@ -82,7 +82,7 @@ input {
 }
 
 button {
-  border: 1px solid var(--grey);
+  border: 1px solid var(--grey-1);
   border-radius: 4px;
   background-color: var(--black);
   color: var(--white);

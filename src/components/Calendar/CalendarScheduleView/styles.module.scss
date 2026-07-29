@@ -1,7 +1,7 @@
 .container {
   display: flex;
   flex-direction: column;
-  border: 1px solid var(--grey);
+  border: 1px solid var(--grey-1);
   overflow: auto;
 
   &:has(.empty) {
@@ -14,7 +14,7 @@
   display: flex;
   flex-direction: column;
   row-gap: 4px;
-  border-bottom: 1px solid var(--grey);
+  border-bottom: 1px solid var(--grey-1);
 }
 
 .date {
@@ -34,5 +34,5 @@
 }
 
 .time {
-  color: var(--grey);
+  color: var(--grey-1);
 }
