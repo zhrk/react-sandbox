@@ -16,23 +16,23 @@
     "lint": "npm run stylelint && npm run tsc && npm run eslint"
   },
   "dependencies": {
-    "@hyper-fetch/core": "7.5.3",
-    "@hyper-fetch/react": "7.5.3",
+    "@hyper-fetch/core": "8.2.0",
+    "@hyper-fetch/react": "8.2.0",
     "@ngneat/falso": "8.0.2",
     "@tanstack/react-table": "8.21.3",
     "clsx": "2.1.1",
-    "date-fns": "4.1.0",
-    "nuqs": "2.8.9",
-    "react": "19.2.4",
-    "react-dom": "19.2.4",
-    "react-hook-form": "7.71.2",
-    "react-router-dom": "7.13.1",
-    "remeda": "2.33.6"
+    "date-fns": "4.4.0",
+    "nuqs": "2.9.4",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "react-hook-form": "7.84.0",
+    "react-router-dom": "7.18.2",
+    "remeda": "2.39.0"
   },
   "devDependencies": {
-    "@types/react": "19.2.14",
-    "@types/react-dom": "19.2.3",
-    "@zhrk/pack": "0.0.30"
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.4",
+    "@zhrk/pack": "0.0.42"
   },
   "prettier": "@zhrk/pack/.prettierrc.js",
   "stylelint": {

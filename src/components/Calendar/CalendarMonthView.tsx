@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/prefer-tag-over-role */
 import { clsx } from 'clsx';
 import { endOfDay, format, isSameMonth, isWithinInterval, startOfDay } from 'date-fns';
 import { useCalendarContext } from './CalendarContext';
