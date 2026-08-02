@@ -12,15 +12,11 @@
   & > a {
     padding: 0 8px;
     border: 1px solid var(--grey-1);
-    border-radius: 4px;
-    background-color: var(--black);
     color: var(--text);
-    text-decoration: none;
-    text-align: center;
   }
 
   & > a.active {
-    color: var(--white);
+    background-color: var(--black);
   }
 }
 

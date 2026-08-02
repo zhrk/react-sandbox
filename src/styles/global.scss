@@ -1,14 +1,5 @@
-:root {
-  --white: #fff;
-  --black: #000;
-
-  --bg: #0d1117;
-
-  --grey-1: #8b949e;
-  --grey-2: #21262d;
-
-  --blue: #1f5eff;
-}
+@use 'colors.scss' as *;
+@use 'vars.scss' as *;
 
 html {
   color-scheme: dark;
@@ -18,29 +9,34 @@ body {
   margin: 0;
   background-color: var(--bg);
   color: var(--white);
-  font-family: 'Open Sans', sans-serif;
+  font-family: var(--font-family);
   font-size: 16px;
   line-height: 1.5;
 }
 
 a {
-  color: var(--blue);
-  text-decoration: none;
-  transition: color 0.2s ease-in-out;
+  all: unset;
+  cursor: pointer;
+
+  @media (max-width: $desktop) {
+    cursor: default;
+  }
 }
 
-a:hover {
-  text-decoration: underline;
+:heading {
+  all: unset;
 }
 
 p {
-  margin: 0;
+  all: unset;
 }
 
 ul {
-  list-style: none;
+  all: unset;
+}
+
+pre {
   margin: 0;
-  padding: 0;
 }
 
 input,
@@ -51,10 +47,14 @@ textarea {
 }
 
 button {
-  margin: 0;
-  color: inherit;
-  font: inherit;
+  all: unset;
+  box-sizing: border-box;
+  touch-action: manipulation;
   cursor: pointer;
+
+  @media (max-width: $desktop) {
+    cursor: default;
+  }
 }
 
 button[disabled] {
@@ -65,15 +65,11 @@ table {
   border-collapse: collapse;
 }
 
-::selection {
-  background-color: var(--blue);
-  color: var(--white);
-}
+// ----------------
 
 input {
   outline: none;
   border: 1px solid var(--grey-1);
-  border-radius: 4px;
   background-color: var(--black);
 
   &:focus {
@@ -82,8 +78,8 @@ input {
 }
 
 button {
+  padding: 0 4px;
   border: 1px solid var(--grey-1);
-  border-radius: 4px;
   background-color: var(--black);
   color: var(--white);
 }
